@@ -33,6 +33,8 @@ import {Header} from 'datable-react';
 import {Table} from 'datable-react';
 import {Footer} from 'datable-react';
 
+//css module for the table
+import "datable-react/dist/index.css";
 
 //to use all the table - Header, table, footer 
 <DataTable />
