@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: SortData.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: SortData.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useContext } from 'react';
+import { StoreContext } from '../utils/storeContext';
+import PropTypes from 'prop-types'
+
+
+/**
+ * component to sort datas by click on columns
+ * @param {Object[]} label - value of the table'scolumn selected
+ * @param {Object} customArrow - style of the arrow
+ * @param {string} color - the color of the font
+ * @param {string} arrowColor - the color of arrows of sorting data
+ * @returns { HTMLElement }
+ */
+const SortData = ({label, customArrow, color, arrowColor}) => {
+
+    const {store} = useContext(StoreContext)
+    const styleArrow = {
+        color : arrowColor,
+        filter: 'brightness(150%)'
+    }
+
+    /**
+     * Function to sort data 
+     * @param {string} column - name of the column
+     * @returns {Object[]} update of the data's list
+     */
+    const sortData = column => (e) =>{
+        let arrowBottom = document.querySelector(`.arrow__bottom.${store.lastSpan[0]}` )
+        let arrowTop = document.querySelector(`.arrow__top.${store.lastSpan[0]}` )
+    
+        //setLastSpan(column) for the store
+        store.lastSpan[1](column)
+
+        //change style for arrows
+        if(arrowTop != null){
+        arrowTop.style.color = arrowColor;
+        }
+        if(arrowBottom != null){
+        arrowBottom.style.color = arrowColor;
+        }
+            
+            const sort = () =>{
+                return Object.keys(store.dataArr[0]).sort((a, b) => {
+                    const dataColumn = new Date(store.dataArr[0][a][column])
+                    if(store.toggleClick[0] === false){
+
+                        // if dataColumn is a Date so sort data
+                        if(dataColumn > 0){
+                            e.currentTarget.childNodes[1].firstChild.style.color = color;
+                            store.toggleClick[1](true)
+                            return  new Date(store.dataArr[0][a][column]) - new Date(store.dataArr[0][b][column]);
+                        
+                        }else{
+                            let fa = store.dataArr[0][a][column].toLowerCase(),
+                            fb = store.dataArr[0][b][column].toLowerCase();
+                            store.toggleClick[1](true)
+                            e.currentTarget.childNodes[1].firstChild.style.color = color;
+
+                        return (fa > fb) ? 1 : (fa &lt; fb)? -1 : 0 ; 
+
+                        }
+                    }else{
+                        // if dataColumn is a Date so sort data
+                        if(dataColumn > 0){
+                            e.currentTarget.childNodes[1].lastChild.style.color = color;
+                            store.toggleClick[1](false)
+                            return  new Date(store.dataArr[0][b][column]) - new Date(store.dataArr[0][a][column]);
+
+                        }else{
+                            let fa = store.dataArr[0][a][column].toLowerCase(),
+                            fb = store.dataArr[0][b][column].toLowerCase();
+                            
+                            e.currentTarget.childNodes[1].lastChild.style.color = color;
+                            store.toggleClick[1](false)
+
+                        return (fa &lt; fb) ? 1 : (fa > fb)? -1 : 0 ; 
+                        
+                        }
+                    }
+                
+            }
+            ).map(found => ({...store.dataArr[0][found]})) 
+        }
+            
+            const result = sort()
+            store.dataArr[1](result)
+            store.indexStart[1](0)
+            store.indexEnd[1](store.length[0])
+            store.count[1](store.dataArr[0].length)
+        }
+
+
+    return (
+        &lt;div className={`arrow`} style={customArrow} onClick={sortData(label.value)} >
+            &lt;h4>{label.text}&lt;/h4>
+            &lt;div className='arrow__wrap' >
+                &lt;span className={'arrow__top '+label.value} style={styleArrow} > &amp;#9650;&lt;/span>
+                &lt;span className={'arrow__bottom ' +label.value} style={styleArrow} >  &amp;#9660;&lt;/span>
+            &lt;/div>
+            
+        &lt;/div>
+    );
+};
+
+SortData.propTypes = {
+    label: PropTypes.object, 
+    color: PropTypes.string,
+    arrowColor: PropTypes.string,
+    customArrow: PropTypes.object,
+}
+
+export default SortData;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Arrow">Arrow</a></li><li><a href="global.html#Column">Column</a></li><li><a href="global.html#DataTable">DataTable</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Pagination">Pagination</a></li><li><a href="global.html#Row">Row</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#SortData">SortData</a></li><li><a href="global.html#Table">Table</a></li><li><a href="global.html#TableLength">TableLength</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Dec 13 2022 12:18:58 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

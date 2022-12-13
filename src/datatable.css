@@ -1,0 +1,147 @@
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    
+}
+h4{
+    margin: 0;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+select{
+    border-radius: 2px;
+    border: none;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+}
+
+.dataTable__wrapper{
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+    
+}
+.dataTable__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 0;
+}
+.dataTable__footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 0;
+    flex-wrap: wrap;
+}
+.dataTable__footer__pagination{
+    display: flex;
+    justify-content: space-between;
+}
+.pagination button, .pagination span{
+    width: 43px;
+    height: 35px;
+    margin: 0 3px;
+}
+.pagination__direct{
+padding-top: 4%;
+}
+
+.previous button, .nextBtn button{
+    height: 35px;
+    width: 75px;
+    border: none;
+}
+.pagination{
+    text-align: center;
+    margin: auto;
+    
+}
+.nextBtn{
+    text-align: end;
+}
+.arrow{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    column-gap: 5px;
+    cursor: pointer;
+}
+.arrow__wrap{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+    .dataTable__wrapper{
+        width: 90%;
+    }
+
+    .arrow{
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .arrow__wrap{
+        flex-direction: row;
+    }
+    th, td {
+        padding: 5px;
+        font-size: 14px;
+      }
+}
+
+@media only screen and  (max-width: 760px) {
+    td, tr { display: block; }
+    
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr { 
+        border: 1px solid #75797a; 
+        margin-top: 7%;
+    } 
+    tr + tr { margin-top: 1.5em; }
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        background-color: white;
+        text-align: left;
+    }
+    td:before {
+        content: attr(data-label);
+        display: inline-block;
+        line-height: 1.5;
+        margin-left: -100%;
+        width: 100%;
+        white-space: nowrap;
+        font-weight: 600;
+    }
+    .dataTable__header{
+        flex-direction: column;
+    }
+    .dataTable__header div{
+        padding: 2% 0;
+    }
+    .pagination{
+        order: 3;
+        margin: auto;
+        padding: 3%;
+    }
+    .nextBtn{
+        order: 2;
+    }
+    .dataTable__footer__pagination{
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    }

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Pagination.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Pagination.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useContext } from 'react';
+import { StoreContext } from '../utils/storeContext';
+import PropTypes from 'prop-types';
+
+/**
+ * Component for the table's pagination 
+ * @param {boolean} language - to set the language 
+ * @param {Object} customPagination - style for the pagination 
+ * @param {string} firstBackground - the color of the first background
+ * @param {string} secondBackground - the color of the second color
+ * @param {string} color - the color of the font
+ * @returns { HTMLElement }
+ */
+const Pagination = ({language, customPagination, firstBackground, secondBackground, color}) => {
+
+    const {store} = useContext(StoreContext)
+    const page = store.totalPage[0];
+    let countIterate = 1
+    let numberArray = [];
+    let resultArray = [];
+    const current = Number(store.currentPage[0]) - 1;
+    const nextSibling = current + 1 ;
+    const previousSibling = current -1;
+
+
+        //create array with integer until page number
+        for(let i = 0 ; i &lt; page; i++){
+            numberArray.push(countIterate);
+            countIterate ++;
+        }
+
+    const start = numberArray[0];
+    const last = numberArray.length;
+
+        const changePage = (e) =>{
+            store.indexEnd[1](store.length[0] * e.target.value);
+            store.indexStart[1]((store.length[0] * e.target.value) - store.length[0])
+            store.currentPage[1](e.target.value)
+        }
+
+        
+        
+        //create a new array to show only few number's page -> shorter the pagination
+        if(numberArray.length >= 5){
+
+            if(start === numberArray[current]){
+                resultArray.push(start, numberArray[1], numberArray[2], "...", last)
+            }
+            else if(numberArray[page - 1] === numberArray[current ]){
+                resultArray.push(start, numberArray[1], "...",numberArray[page - 3],numberArray[page - 2], last)
+            }
+            else if(numberArray[previousSibling] === start ){
+                resultArray.push(numberArray[previousSibling], numberArray[current], numberArray[nextSibling],"...", last)
+            } 
+            else if(numberArray[previousSibling - 1] === start){
+                resultArray.push(start, numberArray[previousSibling], numberArray[current], numberArray[nextSibling],"...", last)
+            }
+            else if(numberArray[nextSibling] === last){
+                resultArray.push(start,'...', numberArray[previousSibling], numberArray[current], numberArray[nextSibling])
+            } 
+            else if(numberArray[nextSibling + 1] === last){
+                resultArray.push(start,'...', numberArray[previousSibling], numberArray[current], numberArray[nextSibling], last)
+            }
+            else if(numberArray[current] &lt;= last - 3 || numberArray[current] >= start + 3){
+                resultArray.push(start,'...', numberArray[previousSibling], numberArray[current], numberArray[nextSibling],"...", last)
+            }
+            else{
+                resultArray = numberArray;
+            } 
+        }
+        
+        
+    return (
+        &lt;div className={`pagination`} style={customPagination}>
+            &lt;div>
+        
+        { 
+            resultArray.map((input, index) =>{
+                    
+                if(input === "..."){
+                    return &lt;span key={index}>...&lt;/span>
+                }else if(input === current +1){
+                    return &lt;button key={index} style={{backgroundColor: firstBackground, border: 'none', color: color }} value={input} onClick={changePage} >{input}&lt;/button>
+                }
+                else{
+                    return &lt;button key={index} style={{backgroundColor: secondBackground ,border: 'none', }} value={input} onClick={changePage} >{input}&lt;/button>
+                }
+                
+            })
+            
+        }
+        &lt;/div>
+        &lt;div className='pagination__direct'>
+        &lt;label htmlFor='pageNumber'>{language? "Go directly to page :" : "Aller directement à la page:"}  &lt;/label>
+        &lt;select id='pageNumber' name='pageNumber' onChange={changePage}>
+        {
+            numberArray.map((input, i) =>{
+                
+                return &lt;option key={i}  value={input}>{input}&lt;/option>
+            })
+        }
+        &lt;/select>
+        &lt;/div>
+        &lt;/div>
+    );
+};
+
+Pagination.propTypes = {
+    language: PropTypes.bool,
+    firstBackground: PropTypes.string,
+    color: PropTypes.string,
+    secondBackground: PropTypes.string,
+    customPagination: PropTypes.object
+}
+
+export default Pagination;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Arrow">Arrow</a></li><li><a href="global.html#Column">Column</a></li><li><a href="global.html#DataTable">DataTable</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Pagination">Pagination</a></li><li><a href="global.html#Row">Row</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#SortData">SortData</a></li><li><a href="global.html#Table">Table</a></li><li><a href="global.html#TableLength">TableLength</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Dec 13 2022 12:18:58 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

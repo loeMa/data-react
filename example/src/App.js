@@ -1,10 +1,12 @@
 import React from 'react'
-
-import { ExampleComponent } from 'datable-react'
+import {exampleLabels, exampleData} from './data/data'
 import 'datable-react/dist/index.css'
+import { DataTable } from 'datable-react'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+
+  return <DataTable labels={exampleLabels} data={exampleData} />
+  
 }
 
 export default App

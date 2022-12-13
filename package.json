@@ -2,7 +2,10 @@
   "name": "datable-react",
   "version": "1.0.0",
   "description": "data table component with reactJS",
-  "author": "loeMa",
+  "author":{ 
+    "name" : "loeMa",
+    "email": "chloe.choquet@gmail.com"
+  },
   "license": "MIT",
   "repository": "loeMa/datable-react",
   "main": "dist/index.js",
@@ -11,6 +14,14 @@
   "engines": {
     "node": ">=10"
   },
+  "keywords": [
+    "react",
+    "Table",
+    "sortable",
+    "react-component",
+    "pagination"
+  ],
+  "homepage": "https://github.com/loeMa/datable-react",
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
@@ -21,13 +32,13 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "predeploy": "cd example && npm install && npm run build",
-    "deploy": "gh-pages -d example/build"
+    "deploy": "gh-pages -d example/build",
+    "jsdoc": "jsdoc -c jsdoc.json"
   },
   "peerDependencies": {
     "react": "^16.0.0"
   },
   "devDependencies": {
-    "microbundle-crl": "^0.13.10",
     "babel-eslint": "^10.0.3",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
@@ -41,6 +52,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",
@@ -49,5 +61,8 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "jsdoc": "^4.0.0"
+  }
 }
