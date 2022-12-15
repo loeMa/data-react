@@ -13,7 +13,7 @@ td {
     padding: 10px;
     text-align: center;
 }
-select{
+.select__table{
     border-radius: 2px;
     border: none;
     height: 30px;

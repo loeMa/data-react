@@ -32,21 +32,22 @@ import {DataTable} from 'datable-react';
 import {Header} from 'datable-react';
 import {Table} from 'datable-react';
 import {Footer} from 'datable-react';
+import {labels, data} from './your-data-repository'
 
 //css module for the table
 import "datable-react/dist/index.css";
 
 //to use all the table - Header, table, footer 
-<DataTable />
+<DataTable labels={labels} data={data} />
 
 //to use the header
-<Header />
+<Header labels={labels} data={data} />
 
 //to use only the table
-<Table />
+<Table labels={labels} data={data} />
 
 //to use the footer
-<Footer />
+<Footer labels={labels} data={data} />
 ```
 
 ### include data

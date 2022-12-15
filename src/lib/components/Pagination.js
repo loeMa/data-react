@@ -94,7 +94,7 @@ const Pagination = ({language, customPagination, firstBackground, secondBackgrou
         </div>
         <div className='pagination__direct'>
         <label htmlFor='pageNumber'>{language? "Go directly to page :" : "Aller directement à la page:"}  </label>
-        <select id='pageNumber' name='pageNumber' onChange={changePage}>
+        <select id='pageNumber' name='pageNumber' className='select__table' onChange={changePage}>
         {
             numberArray.map((input, i) =>{
                 

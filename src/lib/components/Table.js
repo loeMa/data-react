@@ -39,7 +39,7 @@ const Table = ({labels, firstBackground, secondBackground, color, arrowColor}) =
                         
                     }) :
                     <tr>
-                        <td>Aucune donnée de disponible </td>
+                        <td colSpan={labels.length} >Aucune donnée de disponible </td>
                     </tr>
                     }   
                 

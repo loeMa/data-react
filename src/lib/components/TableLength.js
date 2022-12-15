@@ -27,7 +27,7 @@ const TableLength = ({ data, language, customLength }) => {
     <div style={customLength}>
       <label htmlFor='tableLength'>
         {language ? 'Show ' : 'Afficher '}
-        <select name='tableLength' onChange={handleChange}>
+        <select name='tableLength' className='select__table' onChange={handleChange}>
           <option value='10'>10</option>
           <option value='25'>25</option>
           <option value='50'>50</option>
