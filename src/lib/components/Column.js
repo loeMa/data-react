@@ -17,7 +17,6 @@ import 'datable-react/dist/index.css';
 const Column = ({label, customColumn, firstBackground, color, arrowColor}) => {
     return (
         <th  scope="col" className={`column__content ` } style={{backgroundColor: firstBackground, color: color, ...customColumn}} >
-            {/* <h4>{label.text}</h4> */}
             <SortData label={label} color={color} arrowColor={arrowColor} />
         </th>
     );

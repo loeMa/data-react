@@ -94,7 +94,7 @@ const SortData = ({label, customArrow, color, arrowColor}) => {
 
     return (
         <div className='arrow' style={customArrow} onClick={sortData(label.value)} >
-            <h4>{label.text}</h4>
+            <p>{label.text}</p>
             <div className='arrow__wrap' >
                 <span className={'arrow__top '+label.value} style={styleArrow} > &#9650;</span>
                 <span className={'arrow__bottom ' +label.value} style={styleArrow} >  &#9660;</span>
