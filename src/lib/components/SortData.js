@@ -47,7 +47,7 @@ const SortData = ({label, customArrow, color, arrowColor}) => {
                     if(store.toggleClick[0] === false){
 
                         // if dataColumn is a Date so sort data
-                        if(dataColumn > 0){
+                        if(Date.parse(dataColumn)){
                             e.currentTarget.childNodes[1].firstChild.style.color = color;
                             store.toggleClick[1](true)
                             return  new Date(store.dataArr[0][a][column]) - new Date(store.dataArr[0][b][column]);
@@ -63,7 +63,7 @@ const SortData = ({label, customArrow, color, arrowColor}) => {
                         }
                     }else{
                         // if dataColumn is a Date so sort data
-                        if(dataColumn > 0){
+                        if(Date.parse(dataColumn)){
                             e.currentTarget.childNodes[1].lastChild.style.color = color;
                             store.toggleClick[1](false)
                             return  new Date(store.dataArr[0][b][column]) - new Date(store.dataArr[0][a][column]);
