@@ -38,13 +38,3 @@ export const StoreProvider = ({children, data}) => {
   }
 
 
-/* const handleChange = ( e) =>{
-        
-    setLength(Number(e.target.value))
-    setIndexEnd(Number(e.target.value))
-    setIndexStart(0)
-    setCount(data.length)
-        setDataArr(dataArr)
-    }
-
-export {handleChange}; */
