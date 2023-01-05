@@ -48,13 +48,11 @@ const SortData = ({label, customArrow, color, arrowColor}) => {
 
                         // if dataColumn is a Date so sort data
                         if(Date.parse(dataColumn)){
-                            console.log(store.dataArr[0][a])
                             e.currentTarget.childNodes[1].firstChild.style.color = color;
                             store.toggleClick[1](true)
                             return  new Date(store.dataArr[0][a][column]) - new Date(store.dataArr[0][b][column]);
                         
                         }else{
-                            console.log(dataColumn)
                             const fa = store.dataArr[0][a][column].toLowerCase();
                             const fb = store.dataArr[0][b][column].toLowerCase();
                             store.toggleClick[1](true)

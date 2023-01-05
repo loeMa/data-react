@@ -1,5 +1,5 @@
 import React from 'react'
-import {exampleLabels, exampleData} from './data/data'
+import {exampleLabels} from './data/data'
 import MockData from './data/MOCK_DATA.json'
 import 'datable-react/dist/index.css'
 import { DataTable } from 'datable-react'

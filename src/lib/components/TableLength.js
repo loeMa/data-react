@@ -21,6 +21,8 @@ const TableLength = ({ data, language, customLength }) => {
     store.indexStart[1](0)
     store.count[1](data.length)
     store.currentPage[1](1)
+    store.totalPage[1](Math.ceil(store.dataArr[0].length / e.target.value))
+    
   }
 
   return (

@@ -23,8 +23,8 @@ const Footer = ({language, customFooter, firstBackground, secondBackground, colo
     return (
         <div className='dataTable__footer' style={customFooter}>
             <div className='dataTable__footer__entries'>
-                {language? <p>Showing {store.indexStart[0]+1} to {store.indexEnd[0]} of {store.dataArr[0].length} entries</p> 
-                : <p>Affichage de {store.indexStart[0]+1} à {store.indexEnd[0]} sur {store.dataArr[0].length} données</p>
+                {language? <p>Showing {store.indexStart[0]+1} to {store.indexEnd[0]< store.dataArr[0].length? store.indexEnd[0] : store.dataArr[0].length} of {store.dataArr[0].length} entries</p> 
+                : <p>Affichage de {store.indexStart[0]+1} à {store.indexEnd[0]< store.dataArr[0].length? store.indexEnd[0] : store.dataArr[0].length} sur {store.dataArr[0].length} données</p>
                 }
             </div>
             <div className='dataTable__footer__pagination'>

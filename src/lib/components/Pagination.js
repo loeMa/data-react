@@ -17,6 +17,7 @@ const Pagination = ({language, customPagination, firstBackground, secondBackgrou
 
     const {store} = useContext(StoreContext)
     const page = store.totalPage[0];
+    
     let countIterate = 1
     // eslint-disable-next-line prefer-const
     let numberArray = [];
